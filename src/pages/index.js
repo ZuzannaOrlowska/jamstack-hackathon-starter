@@ -13,7 +13,8 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <form name="responses" method="POST" data-netlify="true">
-        <input type="text"/>
+        <input name="age" placeholder="Age" type="text"/>
+        <input name="gender" placeholder="Gender" type="text"/>
         <button type="submit">SUBMIT</button>
         </form>
       </Layout>
