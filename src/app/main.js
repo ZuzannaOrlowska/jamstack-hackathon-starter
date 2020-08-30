@@ -8,20 +8,21 @@ function Main() {
   const { user } = useIdentityContext()
   const [err, setErr] = React.useState("")
 
+  const inputData = {kurwa: "mac"}
+
   const handleClick = e => {
     e.preventDefault()
+    console.log("ueihf");
     setLoading(true)
-    fetch("/.netlify/functions/auth-hello", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token.access_token,
-      },
+    fetch("/.netlify/functions/responses", {
+      body: JSON.stringify(inputData),
+      method: "POST"
     })
       .then(response => response.json())
       .then(json => {
         setLoading(false)
         setData(json)
+        console.log(json)
       })
       .catch(err => {
         if (window.location.origin === "http://localhost:8000")
